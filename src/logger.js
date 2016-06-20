@@ -55,10 +55,10 @@ class Logger  {
 	}
 
 	_initializeTransports() {
-		if ( this._loggerOptions && this._loggerOptions.type === 'default' ) {
-			const loggers = this._loggerOptions.options || [];
+		if ( this._loggerOptions && this._loggerOptions.length > 0 ) {
+			const loggers = this._loggerOptions || [];
 			for ( let i = 0; i < loggers.length; i++ ) {
-				const logger = this._loggerOptions.options[i];
+				const logger = this._loggerOptions[i];
 				if ( logger.type === 'file' || logger.type === 'time' ) {
 					if ( logger.options == null || logger.options.filename == null ) {
 						throw new Error( 'transport "' + logger.type + '" needs a filename option' );
@@ -79,8 +79,7 @@ class Logger  {
 				}
 			}
 		} else {
-			// default logger (behaviour like the std-out-logger)
-			this._transports.push( createConsoleTransport( this._loggerOptions ) );
+			this._transports.push( createConsoleTransport() );
 		}
 	}
 
@@ -116,6 +115,7 @@ class Logger  {
 	}
 }
 
+// use just a console logger (behaviour like the std-out-logger)
 function createConsoleTransport( loggerOptions ) {
 	const defaults = {
 		level: 'info',

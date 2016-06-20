@@ -15,9 +15,13 @@ describe( 'logs to stdout and stderr', function() {
 		return std.calls.mostRecent().args[ 0 ].indexOf( exp ) !== -1;
 	};
 
-	let logger;
+  const loggerOptions = [{
+    type: 'console',
+    options: {colorize: false}
+  }];
+  let logger;
 	beforeEach( function() {
-		logger = new Logger( {colorize: false} );
+		logger = new Logger( loggerOptions );
 		Object.defineProperty( process, 'stdout', {
 			value: { write: stdout }
 		} );
@@ -69,32 +73,28 @@ describe( 'logs to stdout and stderr', function() {
 } );
 
 describe( 'multiple transports', function() {
-
-	const config = {
-		type: 'default',
-		options: [
-			{
-				type: 'console',
-				options: {
-					colorize: false,
-					level: 'info'
-				}
-			}, {
-				type: 'file',
-				options: {
-					filename: 'logs.json',
-					level: 'debug'
-				}
-			}, {
-				type: 'time',
-				options: {
-					level: 'warn',
-					datePattern: '.yyyy-MM-dd-HH-mm',
-					filename: 'time-roated-logfile'
-				}
+	const config = [
+		{
+			type: 'console',
+			options: {
+				colorize: false,
+				level: 'info'
 			}
-		]
-	};
+		}, {
+			type: 'file',
+			options: {
+				filename: 'logs.json',
+				level: 'debug'
+			}
+		}, {
+			type: 'time',
+			options: {
+				level: 'warn',
+				datePattern: '.yyyy-MM-dd-HH-mm',
+				filename: 'time-roated-logfile'
+			}
+		}
+	];
 	it( 'create console, file and rotation transports', function() {
 		const logger = new Logger( config );
 		expect( logger._transports.length ).toEqual( 3 );
@@ -112,12 +112,7 @@ describe( 'multiple transports', function() {
 
 	it( 'creating an unsupported transport throws an error', function( next ) {
 		try {
-			new Logger( {
-				type: 'default',
-				options: [ {
-					type: 'not-supported-transport-type'
-				}]
-			} );
+			new Logger( [{type: 'not-supported-transport-type'}]);
 			next.fail( 'should throw an error' );
 		} catch ( err ) {
 			expect( err.toString() ).toContain( 'not-supported-transport-type' );
@@ -127,12 +122,7 @@ describe( 'multiple transports', function() {
 
 	it( 'creating a file transport throws an error without a filename', function( next ) {
 		try {
-			new Logger( {
-				type: 'default',
-				options: [ {
-					type: 'file'
-				}]
-			} );
+			new Logger( [{type: 'file'}] );
 			next.fail( 'should throw an error' );
 		} catch ( err ) {
 			expect( err.toString() ).toContain( 'filename' );
@@ -142,12 +132,7 @@ describe( 'multiple transports', function() {
 
 	it( 'creating a time(rotation) transport throws an error without a filename', function( next ) {
 		try {
-			new Logger( {
-				type: 'default',
-				options: [ {
-					type: 'time'
-				}]
-			} );
+			new Logger( [{type: 'time'}] );
 			next.fail( 'should throw an error' );
 		} catch ( err ) {
 			expect( err.toString() ).toContain( 'filename' );
