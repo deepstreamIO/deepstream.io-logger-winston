@@ -1,0 +1,37 @@
+{
+  "name": "deepstream.io-logger-winston",
+  "version": "1.0.0",
+  "description": "Winston Logger for deepstream.io",
+  "main": "src/logger.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json",
+    "coverage": "istanbul cover jasmine JASMINE_CONFIG_PATH=jasmine.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepstreamIO/deepstream.io-logger-winston.git"
+  },
+  "author": "deepstreamHub GmbH",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/deepstreamIO/deepstream.io-logger-winston/issues"
+  },
+  "homepage": "https://github.com/deepstreamIO/deepstream.io-logger-winston#readme",
+  "dependencies": {
+    "lodash.merge": "^4.4.0",
+    "winston": "^2.2.0",
+    "winston-daily-rotate-file": "^1.1.4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "colors": "^1.1.2",
+    "coveralls": "^2.11.9",
+    "deepstream.io": "^0.9.0",
+    "istanbul": "^0.4.3",
+    "jasmine": "^2.4.1",
+    "mocha": "^2.5.3"
+  }
+}
