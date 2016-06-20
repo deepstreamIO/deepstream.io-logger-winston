@@ -1,6 +1,6 @@
 {
   "name": "deepstream.io-logger-winston",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Winston Logger for deepstream.io",
   "main": "src/logger.js",
   "directories": {
