@@ -28,7 +28,7 @@
   "devDependencies": {
     "colors": "^1.1.2",
     "coveralls": "^2.11.9",
-    "deepstream.io": "^0.9.0",
+    "deepstream.io": "latest",
     "istanbul": "^0.4.3",
     "jasmine": "^2.4.1"
   }
