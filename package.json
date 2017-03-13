@@ -30,6 +30,6 @@
     "coveralls": "^2.11.9",
     "deepstream.io": "latest",
     "istanbul": "^0.4.3",
-    "jasmine": "^2.4.1"
+    "jasmine": "^2.5.3"
   }
 }
