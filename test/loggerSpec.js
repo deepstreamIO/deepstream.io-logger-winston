@@ -41,14 +41,14 @@ describe( 'logs to stdout and stderr', function() {
 
 	it( 'creates the logger', function() {
 		expect( logger.isReady ).toBe( true );
-		logger.log( C.LOG_LEVEL.INFO, 'a', 'b' );
+		logger.info( 'a', 'b' );
 		expect( comp( stdout, 'a | b' ) ).toBe( true );
 	} );
 
 	it( 'logs to stderr', function() {
 		stdout.calls.reset();
 		stderr.calls.reset();
-		logger.log( C.LOG_LEVEL.ERROR, 'd', 'e' );
+		logger.error('d', 'e' );
 		expect( stdout.calls.count() ).toBe( 0 );
 		expect( stderr.calls.count() ).toBe( 1 );
 	} );
@@ -57,17 +57,17 @@ describe( 'logs to stdout and stderr', function() {
 		logger.setLogLevel( C.LOG_LEVEL.DEBUG );
 		logger._$useColors = false;
 		stdout.calls.reset();
-		logger.log( C.LOG_LEVEL.INFO, 'd', 'e' );
+		logger.info('d', 'e' );
 		expect( stdout.calls.count() ).toBe( 1 );
 		logger.setLogLevel( C.LOG_LEVEL.WARN );
 		stdout.calls.reset();
-		logger.log( C.LOG_LEVEL.INFO, 'd', 'e' );
+		logger.info('d', 'e' );
 		expect( stdout.calls.count() ).toBe( 0 );
 	} );
 
 	it( 'logs with colors as default', function() {
 		logger = new Logger();
-		logger.log( C.LOG_LEVEL.INFO, 'a', 'b' );
+		logger.info('a', 'b' );
 		expect( stdout.calls.allArgs()[0][0].trim() ).toEqual( colors.green( 'a | b' ) );
 	} );
 } );

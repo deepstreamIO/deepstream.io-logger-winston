@@ -83,6 +83,22 @@ class Logger  {
 		}
 	}
 
+	debug (event, logMessage) {
+		this._logger.log('debug', logMessage, {event: event} );
+	}
+
+	info (event, logMessage) {
+		this._logger.log('info', logMessage, {event: event} );
+	}
+
+	warn (event, logMessage) {
+		this._logger.log('warn', logMessage, {event: event} );
+	}
+
+	error (event, logMessage) {
+		this._logger.log('error', logMessage, {event: event} );
+	}
+	  
 	/**
 	* Logs a line
 	*
