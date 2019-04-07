@@ -22,8 +22,8 @@
   "homepage": "https://github.com/deepstreamIO/deepstream.io-logger-winston#readme",
   "dependencies": {
     "lodash.merge": "^4.6.1",
-    "winston": "^2.4.0",
-    "winston-daily-rotate-file": "^1.7.2"
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.8.0"
   },
   "devDependencies": {
     "colors": "^1.1.2",
