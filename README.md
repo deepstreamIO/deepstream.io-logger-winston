@@ -1,5 +1,7 @@
 # Winston Logger for deepstream.io
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/deepstreamIO/deepstream.io-logger-winston.svg)](https://greenkeeper.io/)
+
 Configuration is done in your deepstream config file.
 
 ###### Example
