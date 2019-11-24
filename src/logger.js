@@ -42,7 +42,8 @@ const LEVELS_AND_COLORS = {
 */
 class Logger  {
 	constructor( loggerOptions ) {
-		this._loggerOptions = loggerOptions;
+		this.description = 'Winston Logger'
+		this._loggerOptions = loggerOptions.transports;
 		this._transports = [];
 		this._initializeTransports();
 
@@ -51,7 +52,12 @@ class Logger  {
 			levels: LEVELS_AND_COLORS.levels
 		} );
 		winston.addColors( LEVELS_AND_COLORS.colors );
-		this.isReady = true;
+	}
+
+	async whenReady () {
+	}
+
+	async close () {
 	}
 
 	_initializeTransports() {
@@ -97,6 +103,18 @@ class Logger  {
 
 	error (event, logMessage) {
 		this._logger.log('error', logMessage, {event: event} );
+	}
+
+	fatal (event, logMessage) {
+		this._logger.log('error', logMessage, {event: event} );
+	}
+
+	shouldLog () {
+		return true
+	}
+
+	getNameSpace () {
+		return this
 	}
 	  
 	/**
